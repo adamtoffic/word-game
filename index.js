@@ -23,7 +23,6 @@ async function initializeGame() {
         setupEventListeners();
         loadStats(); // Load saved statistics
         updateAttemptDisplay();
-        console.log(`Today's word: ${word}`);
     } else {
         showMessage('Failed to fetch word. Please try again.', 'error');
     }
