@@ -1,12 +1,16 @@
 # Word Game
 
+🎮 **[Play Live Demo](https://adamtoffic.github.io/word-game/)**
+
 A clean, interactive word guessing game built with vanilla JavaScript, HTML, and CSS. Similar to Wordle, players have 6 attempts to guess a 5-letter word with color-coded feedback.
 
 ## Screenshots
 
-<p style="text-align: center;">
+<p align="center">
   <img src="screenshots/game-interface.png" width="300" alt="Game Interface">
   <img src="screenshots/game-won.png" width="300" alt="Game Won">
+</p>
+<p align="center">
   <img src="screenshots/game-non-valid-word.png" width="300" alt="Game Non-Valid Word">
   <img src="screenshots/game-statistics.png" width="300" alt="Game Statistics">
 </p>
@@ -37,6 +41,12 @@ A clean, interactive word guessing game built with vanilla JavaScript, HTML, and
 
 - A modern web browser
 - Internet connection (for fetching daily words)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/adamtoffic/word-game.git
 
 ### Installation
 
