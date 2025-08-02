@@ -220,3 +220,80 @@ body {
 .letter-input.green {
     animation: celebrate 0.5s ease-in-out;
 }
+
+/* Mobile keyboard styles */
+.mobile-keyboard {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.key {
+    min-width: 32px;
+    height: 42px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f8f9fa;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.key:hover {
+    background: #e9ecef;
+}
+
+.key:active {
+    background: #dee2e6;
+    transform: scale(0.95);
+}
+
+.key.special {
+    font-size: 12px;
+    min-width: 60px;
+}
+
+/* Show keyboard on mobile */
+@media (max-width: 768px) {
+    .mobile-keyboard {
+        display: flex;
+    }
+
+    .letter-input {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .game-controls {
+        order: 1;
+    }
+
+    .stats-container {
+        order: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .key {
+        min-width: 28px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    .key.special {
+        min-width: 50px;
+    }
+}

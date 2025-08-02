@@ -21,6 +21,7 @@ async function initializeGame() {
     if (word) {
         gameState.currentWord = word.toLowerCase();
         setupEventListeners();
+        setupMobileEnhancements(); // Add mobile enhancements
         loadStats(); // Load saved statistics
         updateAttemptDisplay();
     } else {
@@ -452,6 +453,125 @@ async function verifyWord(word) {
     } catch (error) {
         console.error('Failed to verify word:', error.message);
         return false;
+    }
+}
+
+// Mobile-friendly enhancements
+function setupMobileEnhancements() {
+    // Detect if device is mobile
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        addMobileKeyboard();
+        addAutoSubmit();
+    }
+}
+
+function addAutoSubmit() {
+    // Auto-submit when row is complete
+    document.addEventListener('input', (event) => {
+        if (!event.target.classList.contains('letter-input')) return;
+
+        const currentRow = event.target.closest('.row');
+        const word = getWordFromRow(currentRow);
+
+        // Auto-submit when 5 letters are entered
+        if (word.length === 5) {
+            setTimeout(() => {
+                validateWord(word);
+            }, 500); // Small delay for better UX
+        }
+    });
+}
+
+function addMobileKeyboard() {
+    // Create virtual keyboard for mobile
+    const keyboardContainer = document.createElement('div');
+    keyboardContainer.className = 'mobile-keyboard';
+    keyboardContainer.innerHTML = `
+        <div class="keyboard-row">
+            <button class="key">Q</button>
+            <button class="key">W</button>
+            <button class="key">E</button>
+            <button class="key">R</button>
+            <button class="key">T</button>
+            <button class="key">Y</button>
+            <button class="key">U</button>
+            <button class="key">I</button>
+            <button class="key">O</button>
+            <button class="key">P</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key">A</button>
+            <button class="key">S</button>
+            <button class="key">D</button>
+            <button class="key">F</button>
+            <button class="key">G</button>
+            <button class="key">H</button>
+            <button class="key">J</button>
+            <button class="key">K</button>
+            <button class="key">L</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key special" data-key="enter">ENTER</button>
+            <button class="key">Z</button>
+            <button class="key">X</button>
+            <button class="key">C</button>
+            <button class="key">V</button>
+            <button class="key">B</button>
+            <button class="key">N</button>
+            <button class="key">M</button>
+            <button class="key special" data-key="backspace">⌫</button>
+        </div>
+    `;
+
+    // Insert keyboard before stats container
+    const statsContainer = document.querySelector('.stats-container');
+    statsContainer.parentNode.insertBefore(keyboardContainer, statsContainer);
+
+    // Add keyboard event listeners
+    keyboardContainer.addEventListener('click', handleVirtualKeyboard);
+}
+
+function handleVirtualKeyboard(event) {
+    if (!event.target.classList.contains('key')) return;
+
+    const key = event.target.textContent;
+    const specialKey = event.target.dataset.key;
+
+    if (specialKey === 'enter') {
+        // Find current row and submit
+        const currentRow = document.querySelectorAll('.row')[gameState.currentRow];
+        const word = getWordFromRow(currentRow);
+        if (word.length === 5) {
+            validateWord(word);
+        }
+    } else if (specialKey === 'backspace') {
+        // Handle backspace
+        const currentRow = document.querySelectorAll('.row')[gameState.currentRow];
+        const inputs = currentRow.querySelectorAll('.letter-input');
+
+        // Find last filled input
+        for (let i = inputs.length - 1; i >= 0; i--) {
+            if (inputs[i].value) {
+                inputs[i].value = '';
+                inputs[i].focus();
+                break;
+            }
+        }
+    } else {
+        // Handle letter input
+        const currentRow = document.querySelectorAll('.row')[gameState.currentRow];
+        const inputs = currentRow.querySelectorAll('.letter-input');
+
+        // Find first empty input
+        for (let input of inputs) {
+            if (!input.value && !input.disabled) {
+                input.value = key;
+                input.focus();
+                break;
+            }
+        }
     }
 }
 
