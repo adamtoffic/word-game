@@ -191,23 +191,6 @@ body {
 }
 
 /* Better mobile responsiveness */
-@media (max-width: 480px) {
-    .letter-input {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .game-controls {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .stats-grid {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
 
 /* Add success animation */
 @keyframes celebrate {
@@ -295,5 +278,215 @@ body {
 
     .key.special {
         min-width: 50px;
+    }
+}
+
+
+/* Enhanced responsive design */
+
+/* Large screens (desktops) */
+@media (min-width: 1200px) {
+    .game-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .letter-input {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .heading h1 {
+        font-size: 2.5rem;
+    }
+
+    .stats-grid {
+        gap: 50px;
+    }
+}
+
+/* Tablets (portrait and landscape) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .letter-input {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .game-container {
+        padding: 40px 20px;
+    }
+
+    .mobile-keyboard {
+        display: none !important; /* Hide virtual keyboard on tablets */
+    }
+}
+
+/* Small tablets and large phones */
+@media (min-width: 481px) and (max-width: 768px) {
+    .letter-input {
+        width: 48px;
+        height: 48px;
+        font-size: 19px;
+    }
+
+    .key {
+        min-width: 35px;
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .heading h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile landscape mode */
+@media (max-width: 768px) and (orientation: landscape) {
+    .game-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .word-game {
+        order: 1;
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .mobile-keyboard {
+        order: 2;
+        flex: 1;
+        margin: 10px 0;
+        min-width: 300px;
+    }
+
+    .game-controls {
+        order: 3;
+        width: 100%;
+    }
+
+    .stats-container {
+        order: 4;
+        width: 100%;
+    }
+
+    .heading {
+        order: 0;
+        width: 100%;
+    }
+
+    .game-status {
+        order: 0;
+        width: 100%;
+    }
+
+    .letter-input {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .key {
+        min-width: 25px;
+        height: 35px;
+        font-size: 11px;
+    }
+}
+
+/* Very small screens (older phones) */
+@media (max-width: 360px) {
+    .letter-input {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .key {
+        min-width: 24px;
+        height: 32px;
+        font-size: 10px;
+    }
+
+    .key.special {
+        min-width: 40px;
+        font-size: 9px;
+    }
+
+    .heading h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-container {
+        padding: 10px 5px;
+        gap: 10px;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .letter-input {
+        border-width: 1px; /* Thinner borders on high DPI */
+    }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .letter-input.flip {
+        animation: none;
+    }
+
+    .letter-input:focus {
+        transform: none;
+    }
+
+    .key:active {
+        transform: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+
+    .word-game, .stats-container, .mobile-keyboard {
+        background-color: #2d2d2d;
+        color: #fff;
+    }
+
+    .letter-input {
+        background-color: #3d3d3d;
+        border-color: #555;
+        color: #fff;
+    }
+
+    .key {
+        background-color: #4d4d4d;
+        border-color: #666;
+        color: #fff;
+    }
+}
+
+/* Print styles */
+@media print {
+    .mobile-keyboard,
+    .game-controls {
+        display: none;
+    }
+
+    .game-container {
+        background: white;
+        color: black;
     }
 }
