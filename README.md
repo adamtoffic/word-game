@@ -47,28 +47,10 @@ A clean, interactive word guessing game built with vanilla JavaScript, HTML, and
 1. Clone the repository:
    ```bash
    git clone https://github.com/adamtoffic/word-game.git
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/adamtoffic/word-game.git
    1. Navigate to the project directory:
    ```bash
    cd word-game
    ```
-   2. Open `index.html` in your web browser or use a local server:
-       Using Python
-      ```bash
-      python -m http.server 8000
-      ```
-      Using Node.js
-      ```bash
-      npx http-server (if you have http-server installed globally)
-      ```npx http-server
-      ```
-3. Open your browser and go to `http://localhost:8000` or the port you specified.
-
 ## Technologies Used
 - HTML5 - Structures and semantics
 - CSS3 - Styling and animations
@@ -77,7 +59,11 @@ A clean, interactive word guessing game built with vanilla JavaScript, HTML, and
 - Fetch API - Word validation and daily word retrieval
 
 ## API
-This game uses the [Words Post API](https://https://words.dev-apis.com/validate-word/) to validate words and [Words Get API](https://https://words.dev-apis.com/word-of-the-day) to fetch the daily word. It was made by Frontend Masters.
+This game uses the following APIs provided by Frontend Masters:
+-  **Word of the Day API**: Fetches the daily word to guess.
+   - Endpoint: https://words.dev/api/word-of-the-day
+-  **Word Validation API**: Validates if a guessed word is a valid 5-letter word.
+   - Endpoint: https://words.dev/api/validate-word
 
 ## Contributing
 Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
@@ -86,11 +72,11 @@ Contributions are welcome! If you find a bug or have a feature request, please o
    ```bash
    git checkout -b feature/your-feature-name
    ```
-3. Commit your changes:
+   3. Commit your changes:
    ```bash
    git commit -m "Add your feature description"
    ```
-4. Push to the branch:
+   4. Push to the branch:
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -102,3 +88,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) 
 ## Acknowledgements
 - Inspired by the popular game Wordle
 - Thanks to the Frontend Masters team for the API and inspiration
+<hr></hr> Happy gaming! 🎉
